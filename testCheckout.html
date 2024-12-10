@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="./testCss.css">
+    <script>
+        function calculateTotalPrice() {
+            var product1Qty = parseInt(document.getElementById('product1').value) || 0;
+            var product2Qty = parseInt(document.getElementById('product2').value) || 0;
+            var product3Qty = parseInt(document.getElementById('product3').value) || 0;
+
+            var product1Price = 50;
+            var product2Price = 70;
+            var product3Price = 20;
+
+            var totalPrice = (product1Qty * product1Price) + (product2Qty * product2Price) + (product3Qty * product3Price);
+
+            document.getElementById('total-price').value = totalPrice.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Checkout Page</h1>
+    <p>Total Price: $<span id="total-price-display"></span></p>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var totalPrice = urlParams.get('total-price');
+            document.getElementById('total-price-display').textContent = totalPrice;
+        });
+    </script>
+
+
+
+<!--Test Column-->
+<div class="myContainer"><!--myContainer-->
+<div class="subColumn"><!--subColumn Left-->
+    <div class="left">
+    <table>
+        <tr>
+            <td>
+    <form action="checkout.html" method="get" onsubmit="calculateTotalPrice()">
+        <div class="card"><!--Card-->
+            <img src="images/กระเพราหมู.JPG" style="width: 100%;">
+           <label for="product1"> <h3>ข้าวกระเพราหมู</h3></label>
+          <p>  ผัดกระเพราหมูราดบนข้าวหอมมะลิ</p>
+          <p class="price">50 บาท</p>
+          <span>จำนวน<input type="number" style="width: 30px;" id="product1" name="product1" value="1" min="0" onchange="calculateTotalPrice()"></span>
+        
+        </div><!--Card-->
+            </td>
+            <td>
+                <div class="card"><!--Card-->
+                    <img src="images/pasto.JPG" style="width: 100%;">
+                    <label for="product2"><h3>สปาเกตตี้เพสโต้</h3></label>
+                    <p>สปาเกตตี้ผัดซอสเพสโต้ เบค่อน</p>
+                    <p class="price">70 บาท</p>
+                    <span>จำนวน <input type="number" style="width: 30px;" id="product2" name="product2" value="1" min="0" onchange="calculateTotalPrice()"><br></span>
+                  </div><!--Card-->
+                  
+              </td>
+              
+   
+          </tr>
+          <tr>
+            <td>
+                <label for="product3">Product 3 ($20):</label>
+                <input type="number" id="product3" name="product3" value="1" min="0" onchange="calculateTotalPrice()"><br>
+            </td>
+            <td>
+
+            </td>
+          </tr>
+      </table>
+      <input type="hidden" id="total-price" name="total-price">
+      <input type="submit" value="Checkout">
+    </form>
+  
+</div>
+ </div><!--subColumn Left-->
+ <div class="subColumn"><!--subColumn Right-->
+    <div class="right">
+<h1>Satit Meepradit</h1>
+</div>
+ </div><!--subColumn Right-->
+   </body>
+
+</html>

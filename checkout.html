@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+</head>
+<body>
+    <h1>Checkout Page</h1>
+    <p>Total Price: $<span id="total-price-display"></span></p>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var totalPrice = urlParams.get('total-price');
+            document.getElementById('total-price-display').textContent = totalPrice;
+        });
+    </script>
+</body>
+</html>

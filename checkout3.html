@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .product {
+            margin-bottom: 10px;
+        }
+        .total-price {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout Page</h1>
+        <div id="product-list"></div>
+        <div class="total-price">
+            Total Price: ฿ <span id="total-price-display"></span>
+            <p>ขอบคุณครับ</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var totalPrice = urlParams.get('total-price');
+            var productDetails = JSON.parse(urlParams.get('product-details'));
+
+            document.getElementById('total-price-display').textContent = totalPrice;
+
+            var productList = document.getElementById('product-list');
+            productDetails.forEach(function(product) {
+                if (product.quantity > 0) {
+                    var productItem = document.createElement('div');
+                    productItem.className = 'product';
+                    productItem.textContent = `${product.name}: ${product.quantity} x ${product.price}฿`;
+                    productList.appendChild(productItem);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            float: left;
+        }
+        .product {
+            float: left;
+            width: 300px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .total-price {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function calculateTotalPrice() {
+            var product1Qty = parseInt(document.getElementById('product1').value) || 0;
+            var product2Qty = parseInt(document.getElementById('product2').value) || 0;
+            var product3Qty = parseInt(document.getElementById('product3').value) || 0;
+
+            var product1Price = 10;
+            var product2Price = 15;
+            var product3Price = 20;
+
+            var totalPrice = (product1Qty * product1Price) + (product2Qty * product2Price) + (product3Qty * product3Price);
+
+            document.getElementById('total-price').value = totalPrice.toFixed(2);
+            document.getElementById('product-details').value = JSON.stringify([
+                { name: 'ข้าวกระเพราหมู', quantity: product1Qty },
+                { name: 'สปาเกตตี้เพสโต้', quantity: product2Qty },
+                { name: 'Product 3', quantity: product3Qty }
+            ]);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">ครัวคุณตุ่ย</h1>
+        <div class="product">
+            <img src="images/กระเพราหมู.jpg" style="width: 250px;"></img><br>
+            <label for="ข้าวกระเพราหมู"><h3>ข้าวกระเพราหมู (50 ฿):</h3></label>
+            <p>ผัดกระเพราหมูราดบนข้าวหอมมะลิ</p>
+            <p>จำนวน :<input type="number" id="product1" value="0" min="0" onchange="calculateTotalPrice()" style="width: 40px"></p>
+        </div>
+
+        <div class="product">
+            <img src="images/pasto.JPG" style="width: 250px;"><br>
+            <label for="สปาเกตตี้เพสโต้"><h3>สปาเกตตี้ผัดซอสเพสโต้ (70 ฿):</h3></label>
+            <p>สปาเกตตี้ผัดซอสเพสโต้</p>
+            <p>จำนวน :<input type="number" id="product2" value="0" min="0" onchange="calculateTotalPrice()" style="width: 40px"></p>
+        </div>
+
+        <div class="product">
+            <label for="product3">Product 3 ($20):</label><br>
+            <input type="number" id="product3" value="0" min="0" onchange="calculateTotalPrice()" ">
+        </div>
+
+        <div class="total-price">
+            Total Price:<span id="total-price-display">0.00 บาท</span>
+        </div>
+        <form action="checkout3.html" method="get" onsubmit="calculateTotalPrice()">
+            <input type="hidden" id="total-price" name="total-price">
+            <input type="hidden" id="product-details" name="product-details">
+            <input type="submit" value="Checkout">
+        </form>
+    </div>
+
+    <script>
+        function calculateTotalPrice() {
+            var product1Qty = parseInt(document.getElementById('product1').value) || 0;
+            var product2Qty = parseInt(document.getElementById('product2').value) || 0;
+            var product3Qty = parseInt(document.getElementById('product3').value) || 0;
+
+            var product1Price = 50;
+            var product2Price = 70;
+            var product3Price = 20;
+
+            var totalPrice = (product1Qty * product1Price) + (product2Qty * product2Price) + (product3Qty * product3Price);
+
+            document.getElementById('total-price-display').textContent = totalPrice.toFixed(2);
+            document.getElementById('total-price').value = totalPrice.toFixed(2);
+            document.getElementById('product-details').value = JSON.stringify([
+                { name: 'ข้าวกระเพราหมู', quantity: product1Qty, price: product1Price },
+                { name: 'สปาเกตตี้เพสโต้', quantity: product2Qty, price: product2Price },
+                { name: 'Product 3', quantity: product3Qty, price: product3Price }
+            ]);
+        }
+    </script>
+</body>
+</html>
+

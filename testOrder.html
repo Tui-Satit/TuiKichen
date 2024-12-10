@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <script>
+        function calculateTotalPrice() {
+            var product1Qty = parseInt(document.getElementById('product1').value) || 0;
+            var product2Qty = parseInt(document.getElementById('product2').value) || 0;
+            var product3Qty = parseInt(document.getElementById('product3').value) || 0;
+
+            var product1Price = 50;
+            var product2Price = 70;
+            var product3Price = 20;
+
+            var totalPrice = (product1Qty * product1Price) + (product2Qty * product2Price) + (product3Qty * product3Price);
+
+            document.getElementById('total-price').value = totalPrice.toFixed(2);
+        }
+    </script>
+    <link rel="stylesheet" href="./testCss.css">
+</head>
+<body>
+    <div style="width: 1000px; background-color: rgb(236, 137, 9); margin-left: 300px; float: left;"><!--Container-fluid---->
+        <div style="float: left; background-color: blanchedalmond;width: 100%;" ><!--Row--->
+    <div style="width: 800px; background-color: aquamarine;padding: 20px;float: left;"><!--Container left-->
+    <h1>Order Page</h1>
+    <div class="card" style="width: 400px; float: left;"><!--div Card-->
+    <form action="checkout.html" method="get" onsubmit="calculateTotalPrice()">
+        
+            <img src="images/กระเพราหมู.JPG" class="card-img-top" alt="..." style="width: 200px;">
+            <div class="card-body">
+              <label for="product1"><h5 class="card-title">ข้าวกระเพราหมู</h5></label>
+              <p class="card-text">ผัดกระเพราหมูราดบนข้าวหอมมะลิ</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ราคา 50 บาท</li>
+              <li class="list-group-item">จำนวน :<input type="number" id="product1" name="product1" value="1" min="0" onchange="calculateTotalPrice()" style="width: 30px;"><br> </li>
+              </ul>
+        
+        
+        
+        <label for="product2">Product 2 ($15):</label><br>
+        <input type="number" id="product2" name="product2" value="1" min="0" onchange="calculateTotalPrice()"><br>
+        <label for="product3">Product 3 ($20):</label><br>
+        <input type="number" id="product3" name="product3" value="1" min="0" onchange="calculateTotalPrice()"><br>
+        <input type="hidden" id="total-price" name="total-price">
+        <input type="submit" value="Checkout">
+    </form>
+</div><!--Div Card-->
+<div class="card" style="width: 450px; float: left;"><!--div Card-->
+    <h1>Order Page</h1>
+    <form action="checkout.html" method="get" onsubmit="calculateTotalPrice()">
+        
+            <img src="images/กระเพราหมู.JPG" class="card-img-top" alt="..." style="width: 200px;">
+            <div class="card-body">
+              <label for="product1"><h5 class="card-title">ข้าวกระเพราหมู</h5></label>
+              <p class="card-text">ผัดกระเพราหมูราดบนข้าวหอมมะลิ</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ราคา 50 บาท</li>
+              <li class="list-group-item">จำนวน :<input type="number" id="product1" name="product1" value="1" min="0" onchange="calculateTotalPrice()" style="width: 30px;"><br> </li>
+              </ul>
+         
+        
+        
+        <label for="product2">Product 2 ($15):</label><br>
+        <input type="number" id="product2" name="product2" value="1" min="0" onchange="calculateTotalPrice()"><br>
+        <label for="product3">Product 3 ($20):</label><br>
+        <input type="number" id="product3" name="product3" value="1" min="0" onchange="calculateTotalPrice()"><br>
+        <input type="hidden" id="total-price" name="total-price">
+        <input type="submit" value="Checkout">
+    </form>
+</div><!--Div Card-->
+    </div><!--Container Left---->
+    <div class="col-10" style="margin-left: 100px;float: left;"><!--Container right-->
+       
+        </div><!--Container Right---->
+        </div><!--Row-->
+    </div><!--Container-fluid-->
+    
+ 
+</body>
+</html>

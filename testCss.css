@@ -1,0 +1,37 @@
+.myContainer {
+    background-color: rgb(229, 245, 245);
+    width: 1000px;
+    margin:auto;
+}
+.myRow {
+    float: left;
+}
+.column {
+    float: left;
+}
+
+.subColumn {
+    float: left;
+    width: 50%; /* width < 500px */
+}
+.subColumn .left {
+    padding: 10px;
+    border: 2px solid rgb(180, 195, 195);
+}
+.subColumn .right {
+    border: 2px solid rgb(230, 237, 237);
+}
+.card {
+    box-shadow: 0 4px 8px lightslategray;
+    max-width: 230px;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+.price {
+    color: gray;
+    font-size: 18px;
+
+}
